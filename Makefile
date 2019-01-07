@@ -76,6 +76,7 @@ NKRO_ENABLE = yes	    # USB Nkey Rollover
 include $(TMK_DIR)/tool/chibios/common.mk
 include $(TMK_DIR)/tool/chibios/chibios.mk
 LDFLAGS += -Wl,--just-symbols=hardfault.symbols
+CFLAGS+= -Os
 
 build/ikbc_$(PROJECT).bin: build/$(PROJECT).bin
 	srec_cat '(' $(BUILDDIR)/$(PROJECT).bin -binary -fill 0xff 0 $(SREC_CAT_OFFSET_TRAILER) -generate $(SREC_CAT_OFFSET_TRAILER) $(shell expr $(SREC_CAT_OFFSET_TRAILER) + $(SREC_CAT_TRAILER) : ".*" ) -repeat-string "$(SREC_CAT_TRAILER)" ')' -checksum-neg-l-e $(SREC_CAT_OFFSET_CHECKSUM) 4 4 -o $@.crc -binary
