@@ -28,7 +28,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 static matrix_row_t matrix[MATRIX_ROWS];
 static matrix_row_t matrix_debounce[MATRIX_ROWS];
-static uint8_t      debounce_row[MATRIX_ROWS];
+static matrix_row_t debounce_row[MATRIX_ROWS];
 
 void matrix_init(void)
 {
